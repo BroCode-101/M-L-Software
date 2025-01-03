@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col text-center">
+       
+        
+    </div>
+</div>
+<div class="jumbotron jumbotron-fluid text-center text-white" style="background-image: url('{{ url_for('static', filename='images/hero_section.png') }}'); background-size: cover; background-position: center; height: 70vh;">
+    <div class="container">
+        <h1 class="display-4 font-weight-bold">M/L Trainer</h1>
+        <p class="lead">Train your own machine learning model with our software.</p>
+        <a class="btn btn-lg btn-primary" href="/predict" role="button">Train your model</a>
+    </div>
+</div>
+
+    
+    
+    <div class="container mt-5">
+        <div class="row text-center">
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm border-light">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/NaN.png') }}" alt="NaN Icon" style="width: 60px; height:60px; ">
+                        <h5 class="card-title mt-3">Handling NaN Values</h5>
+                        <p class="card-text">remove or replace missing values in your dataset</p>
+                        <a href="{{url_for('handle_nan.upload_file')}}" class="btn btn-primary">Handel NaN</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm border-light">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/categorical_data.png') }}" alt="encode Icon" style="width: 60px; height:60px;">
+                        <h5 class="card-title mt-3">encode categorical value</h5>
+                        <p class="card-text">encode and train categorical value conatain dataset</p>
+                        <a href="/model_performance" class="btn btn-success">encode data</a>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm border-light">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/remove_column.png') }}" alt="Analytics Icon" style="width: 60px;">
+                        <h5 class="card-title mt-3">remove column</h5>
+                        <p class="card-text">Remove any unwanted coulmn in your dataset </p>
+                        <a href="/analytics" class="btn btn-info">Remove column</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <div class="col-lg-4 mb-4">
+        <div class="card shadow-sm border-light">
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/data_log.png') }}" alt="Data_log Icon" style="width: 60px;">
+                <h5 class="card-title mt-3">Dataset logs</h5>
+                <p class="card-text">Explore log history of previously uploaded dataset</p>
+                <a href="/data_log" class="btn btn-info">Explore Dataset logs</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

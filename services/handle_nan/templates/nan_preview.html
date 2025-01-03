@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block content%}
+    <h1>Cleaned Dataset Preview</h1>
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+    <form method="POST">
+        <button type="submit">Download Cleaned Dataset</button>
+    </form>
+{% endblock %}

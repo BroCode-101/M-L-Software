@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% block content%}
+    <h1>Handle NaN Values</h1>
+    <p>Total NaN values in the dataset: {{ total_nan }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>NaN Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for column, count in nan_stats.items() %}
+            <tr>
+                <td>{{ column }}</td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form method="POST">
+        <label for="nan_option">Choose an option:</label>
+        <select name="nan_option" id="nan_option">
+            <option value="drop">Drop Rows with NaN</option>
+            <option value="replace_mode">Replace NaN with Mode</option>
+        </select>
+        <button type="submit">Apply</button>
+    </form>
+
+{% endblock %}
