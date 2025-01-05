@@ -25,30 +25,36 @@ def upload_file():
 @handle_nan.route('/handle_nan/<filename>', methods=['GET', 'POST'])
 def handle_nan_values(filename):
     filepath = os.path.join(UPLOAD_FOLDER, filename)
-    
+
     try:
         data = pd.read_csv(filepath)
     except Exception as e:
-        return str(e)
+        return f"Error reading file: {str(e)}"
 
     if request.method == 'POST':
-        option = request.form['nan_option']
+        option = request.form.get('nan_option', None)  
 
+        if option not in ['drop', 'replace_nan']:
+            return "Invalid option selected for NaN handling."
 
         if option == 'drop':
             data = data.dropna()
 
-
-        elif option == 'replace_mode':
+        elif option == 'replace_nan':
             for column in data.columns:
-                if data[column].isnull().any():
-                    mode_value = data[column].mode()[0]
-                    data[column].fillna(mode_value, inplace=True)
-
+                 if data[column].dtype == 'object' or data[column].nunique() < 10:
+                     mode_value = data[column].mode()[0]
+                     data[column].fillna(mode_value, inplace=True)
+                 else:
+                    mean_value = data[column].mean()
+                    data[column].fillna(mean_value, inplace=True)
 
         cleaned_filename = f"cleaned_{filename}"
         cleaned_filepath = os.path.join(UPLOAD_FOLDER, cleaned_filename)
-        data.to_csv(cleaned_filepath, index=False)
+        try:
+            data.to_csv(cleaned_filepath, index=False)
+        except Exception as e:
+            return f"Error saving cleaned file: {str(e)}"
 
         return redirect(url_for('handle_nan.nan_preview', filename=cleaned_filename))
 
@@ -56,7 +62,13 @@ def handle_nan_values(filename):
     nan_stats = data.isnull().sum().to_dict()
     total_nan = data.isnull().sum().sum()
 
-    return render_template('handle_nan.html', nan_stats=nan_stats, total_nan=total_nan, filename=filename)
+    return render_template(
+        'handle_nan.html',
+        nan_stats=nan_stats,
+        total_nan=total_nan,
+        filename=filename
+    )
+
 
 
 @handle_nan.route('/nan_preview/<filename>', methods=['GET', 'POST'])

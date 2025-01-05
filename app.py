@@ -4,6 +4,7 @@ from model.routes import model
 from services.handle_nan import handle_nan
 import os
 import re
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -16,8 +17,6 @@ app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(model, url_prefix='/model')
 app.register_blueprint(handle_nan,url_prefix='/handle_nan')
 
-
-
 @app.route('/')
 def home():
     return redirect(url_for('auth.login'))
@@ -27,6 +26,11 @@ def predict():
 @app.route('/handle_nan')
 def handle_nan():
     return redirect(url_for('handle_nan.upload_file'))
+@app.route('/Activate_God_mode1')
+def god_mode1():
+    df = pd.read_csv('users.csv')
+    data = df.to_html(index =False)
+    return render_template('render.html', tables=data, titles=list(df.columns))
 
 def strip_html(value):
     return re.sub(r'<[^>]*>', '', value)
