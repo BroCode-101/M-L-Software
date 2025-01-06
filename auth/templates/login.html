@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-4">
-        <h3 class="text-center">Login</h3>
-        <form method="POST" action="{{ url_for('auth.login') }}">
-            <div class="mb-3">
+<div class="login-container row justify-content-center">
+    <div class="login-form col-md-4">
+        <h3 class="login-title text-center">Login</h3>
+        <form class="login-form-body" method="POST" action="{{ url_for('auth.login') }}">
+            <div class="form-group mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-            <p class="text-center mt-2">Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign Up</a></p>
+            <button type="submit" class="login-btn btn btn-primary w-100">Login</button>
+            <p class="signup-link text-center mt-2">Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign Up</a></p>
         </form>
-        <p class="text-center mt-2 text-danger">{{ msg }}</p>
+        <p class="error-message text-center mt-2 text-danger">{{ msg }}</p>
     </div>
 </div>
 {% endblock %}
