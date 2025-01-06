@@ -1,73 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
+<div class="hero-section row">
     <div class="col text-center">
-       
-        
     </div>
 </div>
-<div class="jumbotron jumbotron-fluid text-center text-white" style="background-image: url('{{ url_for('static', filename='images/hero_section.png') }}'); background-size: cover; background-position: center; height: 70vh;">
-    <div class="container">
-        <h1 class="display-4 font-weight-bold">M/L Trainer</h1>
-        <p class="lead">Train your own machine learning model with our software.</p>
-        <a class="btn btn-lg btn-primary" href="/predict" role="button">Train your model</a>
+<div class="jumbotron hero-jumbotron jumbotron-fluid text-center text-white" style="background-image: url('{{ url_for('static', filename='images/hero_section.png') }}'); background-size: cover; background-position: center; height: 70vh;">
+    <div class="hero-container container">
+        <h1 class="hero-title display-4 font-weight-bold">M/L Trainer</h1>
+        <p class="hero-subtitle lead">Train your own machine learning model with our software.</p>
+        <a class="hero-btn btn btn-lg btn-primary" href="/predict" role="button">Train your model</a>
     </div>
 </div>
 
-    
-    
-    <div class="container mt-5">
-        <div class="row text-center">
-            
-            <div class="col-lg-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <div class="card-body">
-                        <img src="{{ url_for('static', filename='images/NaN.png') }}" alt="NaN Icon" style="width: 60px; height:60px; ">
-                        <h5 class="card-title mt-3">Handling NaN Values</h5>
-                        <p class="card-text">remove or replace missing values in your dataset</p>
-                        <a href="{{url_for('handle_nan.upload_file')}}" class="btn btn-primary">Handel NaN</a>
-                    </div>
+<div class="features-container container mt-5">
+    <div class="row text-center">
+        <div class="feature-card col-lg-4 mb-4">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <img class="feature-icon" src="{{ url_for('static', filename='images/NaN.png') }}" alt="NaN Icon" style="width: 60px; height:60px;">
+                    <h5 class="feature-title card-title mt-3">Handling NaN Values</h5>
+                    <p class="feature-text card-text">Remove or replace missing values in your dataset</p>
+                    <a href="{{url_for('handle_nan.upload_file')}}" class="feature-btn btn btn-primary">Handle NaN</a>
                 </div>
             </div>
-            
-            
-            <div class="col-lg-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <div class="card-body">
-                        <img src="{{ url_for('static', filename='images/categorical_data.png') }}" alt="encode Icon" style="width: 60px; height:60px;">
-                        <h5 class="card-title mt-3">encode categorical value</h5>
-                        <p class="card-text">encode and train categorical value conatain dataset</p>
-                        <a href="/model_performance" class="btn btn-success">encode data</a>
-                    </div>
+        </div>
+        <div class="feature-card col-lg-4 mb-4">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <img class="feature-icon" src="{{ url_for('static', filename='images/categorical_data.png') }}" alt="Encode Icon" style="width: 60px; height:60px;">
+                    <h5 class="feature-title card-title mt-3">Encode Categorical Value</h5>
+                    <p class="feature-text card-text">Encode and train datasets containing categorical values</p>
+                    <a href="/model_performance" class="feature-btn btn btn-success">Encode Data</a>
                 </div>
             </div>
-            
-           
-            <div class="col-lg-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <div class="card-body">
-                        <img src="{{ url_for('static', filename='images/remove_column.png') }}" alt="Analytics Icon" style="width: 60px;">
-                        <h5 class="card-title mt-3">remove column</h5>
-                        <p class="card-text">Remove any unwanted coulmn in your dataset </p>
-                        <a href="/analytics" class="btn btn-info">Remove column</a>
-                    </div>
+        </div>
+        <div class="feature-card col-lg-4 mb-4">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <img class="feature-icon" src="{{ url_for('static', filename='images/remove_column.png') }}" alt="Remove Column Icon" style="width: 60px;">
+                    <h5 class="feature-title card-title mt-3">Remove Column</h5>
+                    <p class="feature-text card-text">Remove any unwanted column in your dataset</p>
+                    <a href="/analytics" class="feature-btn btn btn-info">Remove Column</a>
                 </div>
             </div>
         </div>
     </div>
-    
-     <div class="col-lg-4 mb-4">
-        <div class="card shadow-sm border-light">
-            <div class="card-body">
-                <img src="{{ url_for('static', filename='images/data_log.png') }}" alt="Data_log Icon" style="width: 60px;">
-                <h5 class="card-title mt-3">Dataset logs</h5>
-                <p class="card-text">Explore log history of previously uploaded dataset</p>
-                <a href="/data_log" class="btn btn-info">Explore Dataset logs</a>
-            </div>
+</div>
+<div class="log-section col-lg-4 mb-4">
+    <div class="card shadow-sm border-light">
+        <div class="card-body">
+            <img class="log-icon" src="{{ url_for('static', filename='images/data_log.png') }}" alt="Data Log Icon" style="width: 60px;">
+            <h5 class="log-title card-title mt-3">Dataset Logs</h5>
+            <p class="log-text card-text">Explore log history of previously uploaded datasets</p>
+            <a href="/data_log" class="log-btn btn btn-info">Explore Dataset Logs</a>
         </div>
-    </div>
-    </div>
     </div>
 </div>
 {% endblock %}
