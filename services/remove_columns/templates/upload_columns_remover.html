@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Upload Dataset for column removal</h1>
+<form method="POST" enctype="multipart/form-data">
+    <label for="file">Upload CSV File:</label>
+    <input type="file" name="file" id="file" required>
+    <button type="submit">Upload</button>
+{% endblock %}

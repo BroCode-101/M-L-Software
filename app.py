@@ -3,6 +3,7 @@ from auth.routes import auth
 from model.routes import model
 from services.handle_nan import handle_nan
 from services.encode_categorical import encode_categorical
+from services.remove_columns import remove_columns
 import os
 import re
 import pandas as pd
@@ -18,6 +19,7 @@ app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(model, url_prefix='/model')
 app.register_blueprint(handle_nan,url_prefix='/handle_nan')
 app.register_blueprint(encode_categorical,url_prefix = '/encode_categorical')
+app.register_blueprint(remove_columns, url_prefix='/remove_columns')
 
 @app.route('/')
 def home():
@@ -34,6 +36,10 @@ def handle_nan():
 @app.route('/encode_categorical')
 def handle_categorical():
     return redirect(url_for('encode_categorical.upload_encode'))
+
+@app.route('/remove_columns')
+def remove_columns():
+    return redirect(url_for("remove_columns.upload"))
 
 
 @app.route('/clear-dataset-logs-history', methods=['GET','POST'])

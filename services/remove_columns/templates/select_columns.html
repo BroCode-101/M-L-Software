@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Select Columns to Remove</h2>
+    <form action="{{ url_for('remove_columns.select_columns', filename=filename) }}" method="post">
+        <div class="form-check">
+            {% for column in columns %}
+                <input type="checkbox" name="columns" value="{{ column }}" class="form-check-input">
+                <label class="form-check-label">{{ column }}</label><br>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-danger mt-3">Remove Selected Columns</button>
+    </form>
+</div>
+{% endblock %}
