@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block content%}
+    <h1>Categorical Columns</h1>
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+    <form method="POST">
+        <button type="submit">Select Encoding</button>
+    </form>
+{% endblock %}

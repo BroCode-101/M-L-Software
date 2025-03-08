@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Select Encoding for Categorical Columns</h1>
+<form method="POST">
+    <ul>
+        {% for category in categorical_columns %}
+        <li>
+            <strong>{{ category }}</strong>:
+            <label><input type="radio" name="option-{{ category | replace(' ', '_') }}" value="One-Hot" required> One-Hot Encoding</label>
+            <label><input type="radio" name="option-{{ category | replace(' ', '_') }}" value="Label" required> Label Encoding</label>
+            <label><input type="radio" name="option-{{ category | replace(' ', '_') }}" value="Ordinal" required> Ordinal Encoding</label>
+        </li>
+        {% endfor %}
+    </ul>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
