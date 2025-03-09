@@ -1,9 +1,27 @@
 {% extends 'base.html'%}
 {% block content%}
     <h1>Categorical Columns</h1>
-    {% for table in tables %}
-        {{ table|safe }}
-    {% endfor %}
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    {% for column in titles %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in tables[0].split('</tr>')[:-1] %}
+                    <tr>
+                        {% set cells = row.split('</td>')[:-1] %}
+                        {% for cell in cells %}
+                            <td>{{ cell | strip_html }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <form method="POST">
         <button type="submit">Select Encoding</button>
     </form>

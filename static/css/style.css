@@ -1,0 +1,13 @@
+.hero-title {
+    font-family: 'Roboto', sans-serif; /* Choose an elegant font */
+    font-size: 4rem; /* Adjust size for emphasis */
+    font-weight: 800; /* Bold for impact */
+    text-align: center; /* Center-align the text */
+    letter-spacing: 2px; /* Add space between letters */
+    background: linear-gradient(90deg, #00c6ff, #4d7cb5); /* Gradient effect */
+    -webkit-background-clip: text; /* Clip background to text */
+    color: transparent; /* Make text color transparent to show gradient */
+    text-transform: uppercase; /* Transform text to uppercase */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-top: 50px; /* Add spacing from top */
+  }
