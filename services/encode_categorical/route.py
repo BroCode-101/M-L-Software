@@ -1,9 +1,8 @@
-from flask import blueprints, render_template, request, redirect, url_for,session,send_file
+from flask import  render_template, request, redirect, url_for,session,send_file
 import pandas as pd
 import os
 from werkzeug.utils import secure_filename
 from . import encode_categorical
-from urllib.parse import urlencode, parse_qs
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, OrdinalEncoder
 
 UPLOAD_FOLDER = 'uploads/encode_categorical'

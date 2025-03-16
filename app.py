@@ -25,9 +25,9 @@ app.register_blueprint(remove_columns, url_prefix='/remove_columns')
 def home():
     return redirect(url_for('auth.login'))
 
-@app.route('/predict')
+@app.route('/select_model')
 def predict():
-    return redirect(url_for('model.predict'))
+    return redirect(url_for('model.select_model'))
 
 @app.route('/handle_nan')
 def handle_nan():

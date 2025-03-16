@@ -4,7 +4,7 @@
     font-weight: 800; /* Bold for impact */
     text-align: center; /* Center-align the text */
     letter-spacing: 2px; /* Add space between letters */
-    background: linear-gradient(90deg, #00c6ff, #4d7cb5); /* Gradient effect */
+    background: linear-gradient(90deg, #ba9eb2, #b392c2); /* Gradient effect */
     -webkit-background-clip: text; /* Clip background to text */
     color: transparent; /* Make text color transparent to show gradient */
     text-transform: uppercase; /* Transform text to uppercase */

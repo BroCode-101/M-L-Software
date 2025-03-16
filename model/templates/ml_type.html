@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Select Machine Learning Type{% endblock %}
+{% block content %}
+<div class-"card p-4">
+    <h2 class="text-center">Select a Model's Learning</h2>
+    <form method="POST" class="mt-3">
+        <div>
+            <label for="model" class="form-label">Choose a Learning:</label>
+            <select name="model" id="model" class="form-select" required>
+                <option value="Supervised Learning">Supervised</option>
+                <option value="Unsupervised Learning">Unsupervised</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Train</button> 
+    </form>
+</div>
+{% endblock %}

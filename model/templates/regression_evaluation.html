@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Regression Model Evaluation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Regression Model Evaluation</h2>
+    
+    <table class="table table-bordered">
+        <tr>
+            <th>Model Used</th>
+            <td>{{ model }}</td>
+        </tr>
+        <tr>
+            <th>Mean Squared Error (MSE)</th>
+            <td>{{ mse | round(4) }}</td>
+        </tr>
+        <tr>
+            <th>Mean Absolute Error (MAE)</th>
+            <td>{{ mae | round(4) }}</td>
+        </tr>
+        <tr>
+            <th>Root Mean Squared Error (RMSE)</th>
+            <td>{{ rmse | round(4) }}</td>
+        </tr>
+        <tr>
+            <th>R-Squared Value (R²)</th>
+            <td>{{ r2 | round(4) }}</td>
+        </tr>
+    </table>
+
+    <!-- Predicted vs Actual Plot -->
+    <div class="mt-4">
+        <h4>Predicted vs Actual Values</h4>
+        <img src="data:image/png;base64,{{ pred_vs_actual_url }}" alt="Predicted vs Actual Plot" class="img-fluid">
+    </div>
+
+    <!-- Residual Plot -->
+    <div class="mt-4">
+        <h4>Residual Plot</h4>
+        <img src="data:image/png;base64,{{ residuals_plot_url }}" alt="Residual Plot" class="img-fluid">
+    </div>
+
+    <a href="{{ url_for('model.dashboard') }}" class="btn btn-primary mt-3">Back to Dashboard</a>
+</div>
+{% endblock %}
